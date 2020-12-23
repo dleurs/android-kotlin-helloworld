@@ -20,20 +20,7 @@ class GreenActivity : AppCompatActivity() {
         ageText.text = user?.age.toString()
 
         deleteUserButton.setOnClickListener{
-            val builder = AlertDialog.Builder(this)
-
-            builder.setMessage("Delete user ?")
-            builder.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    Log.i("TAG","Success : User deleted")
-                }
-            })
-            builder.setNegativeButton("No", object: DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    Log.i("TAG","Cancelled : User not deleted")
-                }
-
-            })
+            val builder = ConfirmDeleteDialog(this).createDialog()
             builder.show()
             //fragment.show(android.support.v4.app.FragmentActivity.getSupportFragmentManager(), "Hello")
         }
